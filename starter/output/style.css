@@ -1,0 +1,41 @@
+/* Styling for the generated HTML file */
+
+/* Links */
+a {
+    color: #ee4848;
+}
+
+a:hover {
+    color: #1479bd;
+}
+
+/* Page heading styling */
+h1 {
+    font-size: 50px;
+}
+
+.team-heading {
+    background-color: #ee4848;
+    color: #ffffff;
+}
+
+/* Cards styling */
+.team-area {
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.card-header {
+    background-color: #1479bd;
+    color: #ffffff;
+}
+
+.employee-card {
+    box-shadow: 2px 2px 3px 1px rgb(146, 146, 146);
+    transition: box-shadow 0.2s;
+}
+
+.employee-card:hover {
+    box-shadow: 4px 4px 5px 2px rgb(141, 141, 141);
+    transform: scale(1.01);
+}

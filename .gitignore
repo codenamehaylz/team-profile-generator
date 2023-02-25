@@ -102,7 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# The README file and screenshot for the challenge
-Challenge-README.md
-14-object-oriented-programming-challenge-demo.png
