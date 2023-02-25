@@ -13,9 +13,7 @@ const render = require("./src/page-template.js");
 // create Team array used by the generateTeam() function in page-template.js
 const team = [];
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
-
-// Prompts to create a team manager
+// Prompts to create a team manager (this runs first)
 const managerPrompts = () =>
     inquirer.prompt([
         {
@@ -56,13 +54,16 @@ const teamOptions = () =>
             loop: false,
         }
     ])
+    // Initialises the next set of prompts based on user selection, or creates the HTML file if user is done adding team members
     .then((teamChoice) => {
         if (teamChoice.add === "Add an engineer") {
             engineerPrompts();
         } else if (teamChoice.add === "Add an intern") {
             internPrompts();
         } else {
-            console.log(team);
+            const renderedHTML = render(team);
+            fs.writeFile(outputPath, renderedHTML, (err) =>
+            err ? console.error(err) : console.log("Your team page has been created"));
         }
     });
 
@@ -126,4 +127,5 @@ const internPrompts = () =>
         teamOptions();
     });
 
+// Initialises the sequence of prompts
 managerPrompts();
