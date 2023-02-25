@@ -36,7 +36,12 @@ const managerPrompts = () =>
             name: "office",
             message: "What is the team manager's office number?",
         },
-    ]);
+    ])
+    .then((answers) => {
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+        console.log(manager);
+        teamOptions();
+    });
 
 // Prompts option to add more team members
 const teamOptions = () =>
@@ -99,3 +104,5 @@ const internPrompts = () =>
             message: "What is the name of the intern's school?",
         },
     ]);
+
+managerPrompts();
