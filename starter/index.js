@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+// create Team array used by the generateTeam() function in page-template.js
+const team = [];
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -39,7 +41,7 @@ const managerPrompts = () =>
     ])
     .then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
-        console.log(manager);
+        team.push(manager);
         teamOptions();
     });
 
@@ -53,7 +55,16 @@ const teamOptions = () =>
             choices: ["Add an engineer", "Add an intern", "Finish building the team"],
             loop: false,
         }
-    ]);
+    ])
+    .then((teamChoice) => {
+        if (teamChoice.add === "Add an engineer") {
+            engineerPrompts();
+        } else if (teamChoice.add === "Add an intern") {
+            internPrompts();
+        } else {
+            console.log(team);
+        }
+    });
 
 // Prompt for new engineer information
 const engineerPrompts = () =>
@@ -78,7 +89,12 @@ const engineerPrompts = () =>
             name: "github",
             message: "What is the engineer's github username?",
         },
-    ]);
+    ])
+    .then((answers) => {
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        team.push(engineer);
+        teamOptions();
+    });
 
 // Prompts for new intern information
 const internPrompts = () =>
@@ -103,6 +119,11 @@ const internPrompts = () =>
             name: "school",
             message: "What is the name of the intern's school?",
         },
-    ]);
+    ])
+    .then((answers) => {
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        team.push(intern);
+        teamOptions();
+    });
 
 managerPrompts();
