@@ -15,7 +15,12 @@ Download or clone this repository, and then use the command line (e.g. Git Bash)
 The program will ask questions one at a time, starting with information about the Team Manager. It will then ask if you wish to add an Engineer, an Intern, or to finish building the team. You can add as many team members as you like. Once you select 'finish building the team', your html file entitled 'team.html' will be created inside the 'output' folder.
 
 ## Features
-Node.js, inquirer npm for prompts, jest npm for tests, Bootstrap CSS as well as custom CSS styling, fontawesome icons.
+- Node.js
+- inquirer npm for prompts
+- jest npm for tests
+- Bootstrap CSS
+- Custom CSS styling
+- fontawesome icons
 
 ## License
 MIT License.
